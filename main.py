@@ -51,7 +51,7 @@ async def upload(bot: Client, m: Message):
     input: Message = await bot.listen(editable.chat.id)
     x = await input.download()
     await input.delete(True)
-file_name = os.path.splitext
+
     path = f"./downloads/{m.chat.id}"
 
     try:
@@ -73,7 +73,7 @@ file_name = os.path.splitext
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
-
+file_name = os.path.splitext
     await editable.edit("**Enter Batch Name or Press d.**")
     input1: Message = await bot.listen(editable.chat.id)
     raw_text0 = input1.text
