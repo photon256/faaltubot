@@ -73,6 +73,7 @@ async def upload(bot: Client, m: Message):
     input0: Message = await bot.listen(editable.chat.id)
     raw_text = input0.text
     await input0.delete(True)
+    
 file_name = os.path.splitext
     await editable.edit("**Enter Batch Name or Press d.**")
     input1: Message = await bot.listen(editable.chat.id)
