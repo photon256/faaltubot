@@ -149,7 +149,7 @@ async def upload(bot: Client, m: Message):
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
 
             elif 'master.mpd' in url:
-                 url =  url.replace("https://d1d34p8vz63oiq.cloudfront.net", "https://pwapi-aaebd595f347.herokuapp.com").replace("master.mpd", "master.m3u8?token=abd9973e269f23abf67fc3e024749dd16366d7edaf626e2d0e6e8db8897d6259") + raw_text2
+                 url =  url.replace("https://d1d34p8vz63oiq.cloudfront.net", "https://pwapi-aaebd595f347.herokuapp.com").replace("master.mpd", "master.m3u8?token=abd9973e269f23abf67fc3e024749dd16366d7edaf626e2d0e6e8db8897d6259")
             
           
             elif 'videos.classplusapp' in url:
