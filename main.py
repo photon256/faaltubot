@@ -5,6 +5,7 @@
 import os
 import re
 import sys
+import mmap
 import json
 import time
 import asyncio
