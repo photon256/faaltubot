@@ -156,8 +156,7 @@ async def upload(bot: Client, m: Message):
                       prog = await bot.send_message(
                       m.chat.id,
                       text=f"⬇️ Downloading....\n\n"
-                      f"🎬 Name: {raw_text0}\n"
-                      f"📺 Quality: {raw_text2}\n\n"
+                      
                       f"🔗 URL: अबे बेशर्म बेहया लिंक की जगह अपनी वाली को देख ना दरिंदा\n\n"
                       f"Made by 𝙈𝙐𝙎𝘼𝘼𝙁𝙄𝙍"
                       )
