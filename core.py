@@ -37,6 +37,37 @@ def pull_run(work, cmds):
     with concurrent.futures.ThreadPoolExecutor(max_workers=work) as executor:
         print("Waiting for tasks to complete")
         fut = executor.map(exec,cmds)
+async def download_file(url, name):
+    if ".pdf" in url:
+     file_path = f"{name}.pdf"
+    else:
+     file_path = name
+    command = [
+        'aria2c', '--continue', '--max-connection-per-server=4', '--split=4', '--min-split-size=1M',
+        '--out=' + file_path, url
+    ]
+    subprocess.run(command, check=True)
+    return file_path
+
+# Function to decrypt a file
+def decrypt_file(file_path, key):
+    if not os.path.exists(file_path):
+        print(f"File does not exist: {file_path}")
+        return False
+    
+    file_size = os.path.getsize(file_path)
+    num_bytes = min(28, file_size)
+
+    if file_size < 28:
+        print(f"File too small for decryption: {file_path}")
+        return False
+
+    with open(file_path, "r+b") as f:
+        with mmap.mmap(f.fileno(), length=num_bytes, access=mmap.ACCESS_WRITE) as mmapped_file:
+            for i in range(num_bytes):
+                mmapped_file[i] ^= ord(key[i]) if i < len(key) else i
+        return True
+
 async def aio(url,name):
     k = f'{name}.pdf'
     async with aiohttp.ClientSession() as session:
