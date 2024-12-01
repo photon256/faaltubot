@@ -154,7 +154,7 @@ async def upload(bot: Client, m: Message):
                      key = k
                      try:
                       prog = await bot.send_message(
-                      chat_id=int(chat_id),
+                      m.chat.id,
                       text=f"⬇️ Downloading....\n\n"
                       f"🎬 Name: {name}\n"
                       f"📺 Quality: {raw_text2}\n\n"
