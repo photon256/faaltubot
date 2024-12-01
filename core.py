@@ -13,6 +13,7 @@ import requests
 import tgcrypto
 import subprocess
 import concurrent.futures
+import mmap
 
 from utils import progress_bar
 
