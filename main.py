@@ -200,22 +200,16 @@ async def upload(bot: Client, m: Message):
                      url = a
                      key = k
                      try:
-                      prog = await bot.send_message(
-                      m.chat.id,
-                      text=f"⬇️ Downloading....\n\n"
-                      f"🎬 Name: {name}\n"
-                      f"📺 Quality: {raw_text2}\n\n"
-                      f"🔗 URL: अबे बेशर्म बेहया लिंक की जगह अपनी वाली को देख ना दरिंदा\n\n"
-                      f"Made by 𝙈𝙐𝙎𝘼𝘼𝙁𝙄𝙍"
-                      )
+                      Show = f"⥥ 🄳🄾🅆🄽🄻🄾🄰🄳🄸🄽🄶⬇️⬇️... »\n\n📝Name » {name}\n❄Quality » {raw_text2}\n\n🔗URL » {url}"
+                      prog = await m.reply_text(Show)
                       file_path = await helper.download_file(url, name)
                       copy = helper.decrypt_file(file_path, key)
                       filename = file_path
                       await prog.delete(True)
-                      await helper.send_vid(bot, m, cc, filename, thumb, name, m.chat.id)
+                      await helper.send_vid(bot, m, cc, filename, thumb, name, prog)
                       count += 1
                      except FloodWait as e:
-                      await bot.send_message(message.chat.id, text=str(e))
+                      await m.reply_text(str(e))
                       time.sleep(e.x)
                       continue
                 
