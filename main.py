@@ -148,6 +148,30 @@ async def upload(bot: Client, m: Message):
                         text = await resp.text()
                         url = re.search(r"(https://.*?playlist.m3u8.*?)\"", text).group(1)
 
+            elif "*" in url:
+                     a, k = url.split("*", 1)
+                     url = a
+                     key = k
+                     try:
+                      prog = await bot.send_message(
+                      chat_id=int(chat_id),
+                      text=f"⬇️ Downloading....\n\n"
+                      f"🎬 Name: {name}\n"
+                      f"📺 Quality: {raw_text2}\n\n"
+                      f"🔗 URL: अबे बेशर्म बेहया लिंक की जगह अपनी वाली को देख ना दरिंदा\n\n"
+                      f"Made by 𝙈𝙐𝙎𝘼𝘼𝙁𝙄𝙍"
+                      )
+                      file_path = await helper.download_file(url, name)
+                      copy = helper.decrypt_file(file_path, key)
+                      filename = file_path
+                      await prog.delete(True)
+                      await helper.send_vid(bot, m, cc, filename, thumb, name, chat_id)
+                      count += 1
+                     except FloodWait as e:
+                      await bot.send_message(chat_id=int(chat_id), text=str(e))
+                      time.sleep(e.x)
+                      continue
+            
             elif 'master.mpd' in url:
                  url =  url.replace("https://d1d34p8vz63oiq.cloudfront.net", "https://pwapi-aaebd595f347.herokuapp.com").replace("master.mpd", "master.m3u8?token=abd9973e269f23abf67fc3e024749dd16366d7edaf626e2d0e6e8db8897d6259")
             
